@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -11,7 +12,8 @@ import java.util.ArrayList;
  *
  * @author Samuel
  */
-public class PC {
+public class PC implements Serializable {
+    private static final long SerialVersionUID=666L;
     private int ip;
     private String mascara;
     private String Gateway;

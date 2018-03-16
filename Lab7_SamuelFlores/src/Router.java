@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -11,19 +12,20 @@ import java.util.ArrayList;
  *
  * @author Samuel
  */
-public class Router {
+public class Router implements Serializable{
+    private static final long SerialVersionUID=666L;
     private int ip;
     private String mascara;
     private String protocolo;
     private int velocidadt;
     private int velocidadr;
-    private String switchh;
+    private Router switchh;
     private ArrayList<Router> routers = new ArrayList();
 
     public Router() {
     }
 
-    public Router(int ip, String mascara, String protocolo, int velocidadt, int velocidadr, String switchh) {
+    public Router(int ip, String mascara, String protocolo, int velocidadt, int velocidadr, Router switchh) {
         this.ip = ip;
         this.mascara = mascara;
         this.protocolo = protocolo;
@@ -32,13 +34,15 @@ public class Router {
         this.switchh = switchh;
     }
 
-    public String getSwitchh() {
+    public Router getSwitchh() {
         return switchh;
     }
 
-    public void setSwitchh(String switchh) {
+    public void setSwitchh(Router switchh) {
         this.switchh = switchh;
     }
+
+    
 
     public ArrayList<Router> getRouters() {
         return routers;
@@ -91,7 +95,8 @@ public class Router {
 
     @Override
     public String toString() {
-        return "Router{" + "ip=" + ip + ", mascara=" + mascara + ", protocolo=" + protocolo + ", velocidadt=" + velocidadt + ", velocidadr=" + velocidadr + '}';
+        return "Router";
+        
     }
     
     

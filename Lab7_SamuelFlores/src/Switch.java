@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Samuel
  */
-public class Switch {
+public class Switch implements Serializable {
     private String nombre;
     private int velocidadr;
     private int velocidadt;
