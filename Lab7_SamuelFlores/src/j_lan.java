@@ -1,3 +1,6 @@
+
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,7 +33,7 @@ public class j_lan extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,7 +59,7 @@ public class j_lan extends javax.swing.JFrame {
 
         jl_no.setText("jLabel1");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -64,7 +67,7 @@ public class j_lan extends javax.swing.JFrame {
                 "Dispositivo", "IP Address", "Gateway"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,8 +106,18 @@ public class j_lan extends javax.swing.JFrame {
         jLabel9.setText("Mascara");
 
         jButton1.setText("Crear");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Crear");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -238,6 +251,36 @@ public class j_lan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        routers.getRouters().add(new Router(Integer.parseInt(r_ip.getText()), r_mascara.getText(),
+                r_protocolo.getText(), Integer.parseInt(r_velot.getText()),  Integer.parseInt(r_velor.getText()),
+                "Routers"));
+        Object[] newrow = {
+              routers.getRouters().get(routers.getRouters().size()-1).getSwitchh(), routers.getRouters().get(routers.getRouters().size()-1).getIp()
+
+            };
+         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+         model.addRow(newrow);
+         tabla.setModel(model);
+    
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        
+        pcs.setIp(Integer.parseInt(pc_ip.getText()));
+        pcs.setMascara(pc_mascara.getText());
+        pcs.setGateway(pc_ip.getText());
+        Object[] newrow = {
+              "PC",pcs.getIp(),pcs.getGateway()
+
+            };
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+         model.addRow(newrow);
+         tabla.setModel(model);
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -290,7 +333,6 @@ public class j_lan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     public javax.swing.JLabel jl_no;
     private javax.swing.JTextField pc_ip;
     private javax.swing.JTextField pc_mascara;
@@ -299,5 +341,9 @@ public class j_lan extends javax.swing.JFrame {
     private javax.swing.JTextField r_protocolo;
     private javax.swing.JTextField r_velor;
     private javax.swing.JTextField r_velot;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
+Router routers = new Router();
+PC pcs = new PC();
+
 }

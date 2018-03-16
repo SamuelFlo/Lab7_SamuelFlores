@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,17 +17,37 @@ public class Router {
     private String protocolo;
     private int velocidadt;
     private int velocidadr;
+    private String switchh;
+    private ArrayList<Router> routers = new ArrayList();
 
     public Router() {
     }
 
-    public Router(int ip, String mascara, String protocolo, int velocidadt, int velocidadr) {
+    public Router(int ip, String mascara, String protocolo, int velocidadt, int velocidadr, String switchh) {
         this.ip = ip;
         this.mascara = mascara;
         this.protocolo = protocolo;
         this.velocidadt = velocidadt;
         this.velocidadr = velocidadr;
+        this.switchh = switchh;
     }
+
+    public String getSwitchh() {
+        return switchh;
+    }
+
+    public void setSwitchh(String switchh) {
+        this.switchh = switchh;
+    }
+
+    public ArrayList<Router> getRouters() {
+        return routers;
+    }
+
+    public void setRouters(ArrayList<Router> routers) {
+        this.routers = routers;
+    }
+    
 
     public int getIp() {
         return ip;
