@@ -137,18 +137,18 @@ public class Mensaje implements Runnable {
     public String toString() {
         return "Mensaje{" + "IPorigen=" + IPorigen + ", IPdestino=" + IPdestino + ", titulo=" + titulo + ", contenido=" + contenido + '}';
     }
+    
     private Router r;
     @Override
     public void run() {
-        while (true) {
-            if (velor >= velot) {
-                res = "Entregado";
-            } else if (velor <= velot) {
-                res = "Error";
-            }
+        if(velor>=velot){
+            res = "Entregado";      
+        }else if(velor<=velot){
+            res="Error";
+        }
+        while(true){
             if(avanzar){
                 Object[] newrow = {
-                    
                     titulo,r,velot,res,
             };
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();

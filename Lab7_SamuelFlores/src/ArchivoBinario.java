@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class ArchivoBinario {
     ArrayList<PC> pcs = new ArrayList();
     File archivo = null;
+    ArrayList<Router>rout= new ArrayList();
 
     public ArchivoBinario(String path) {
         archivo =new File(path);

@@ -449,7 +449,6 @@ public class j_lan extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        
         ta_ar.setText(arch.getPcs().toString());
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -534,5 +533,5 @@ public class j_lan extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 Router routers = new Router();
 PC pcs = new PC();
-ArchivoBinario arch = new ArchivoBinario("./Mensaje.cbm");
+ArchivoBinario arch = new ArchivoBinario("./Bitacora.cbm");
 }
