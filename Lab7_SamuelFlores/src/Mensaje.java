@@ -24,6 +24,9 @@ public class Mensaje implements Runnable {
     private boolean avanzar;
     private boolean vive;
     private JTable tabla;
+    private int velot;
+    private int velor;
+    private String res;
     
 
     public Mensaje() {
@@ -38,15 +41,47 @@ public class Mensaje implements Runnable {
         vive=true;
     }
 
-    public Mensaje(int IPorigen, int IPdestino, String titulo, String contenido, JTable tabla) {
-        this.IPorigen = IPorigen;
-        this.IPdestino = IPdestino;
-        this.titulo = titulo;
-        this.contenido = contenido;
+    public Mensaje(JTable tabla,String titulo,int velot,int velor) {
+        this.velot=velot;
+        this.velor=velor;
         this.tabla = tabla;
+        this.titulo = titulo;
         avanzar=true;
         vive=true;
     }
+
+    public JTable getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(JTable tabla) {
+        this.tabla = tabla;
+    }
+
+    public int getVelot() {
+        return velot;
+    }
+
+    public void setVelot(int velot) {
+        this.velot = velot;
+    }
+
+    public int getVelor() {
+        return velor;
+    }
+
+    public void setVelor(int velor) {
+        this.velor = velor;
+    }
+
+    public Router getR() {
+        return r;
+    }
+
+    public void setR(Router r) {
+        this.r = r;
+    }
+    
     
 
     public boolean isAvanzar() {
@@ -102,20 +137,26 @@ public class Mensaje implements Runnable {
     public String toString() {
         return "Mensaje{" + "IPorigen=" + IPorigen + ", IPdestino=" + IPdestino + ", titulo=" + titulo + ", contenido=" + contenido + '}';
     }
-
+    private Router r;
     @Override
     public void run() {
-        while(true){
+        while (true) {
+            if (velor >= velot) {
+                res = "Entregado";
+            } else if (velor <= velot) {
+                res = "Error";
+            }
             if(avanzar){
                 Object[] newrow = {
-                    titulo,
+                    
+                    titulo,r,velot,res,
             };
             DefaultTableModel model = (DefaultTableModel) tabla.getModel();
             model.addRow(newrow);
             tabla.setModel(model);
             }
             try {
-                Thread.sleep(50);
+                Thread.sleep(velot);
             } catch (InterruptedException ex) {
             }
         }
